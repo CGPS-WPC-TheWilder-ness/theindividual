@@ -8,3 +8,4 @@ tiktoken
 rich
 openai
 chromadb
+sqlite3==3.35.0
