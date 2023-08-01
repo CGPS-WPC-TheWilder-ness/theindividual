@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0 maximum-scale=1.0">
+        <meta name="description" content="A conversational AI system that listens, learns, and challenges">
+        <meta property="og:title" content="ChatGPT">
+        <meta property="og:image" content="https://openai.com/content/images/2022/11/ChatGPT.jpg">
+        <meta property="og:description" content="A conversational AI system that listens, learns, and challenges">
+        <meta property="og:url" content="https://chat.acy.dev">
+        <link rel="stylesheet" href="/assets/css/style.css">
+        <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicon-16x16.png">
+        <link rel="manifest" href="/assets/img/site.webmanifest">
+        <script src="/assets/js/icons.js"></script>
+        <script src="/assets/js/chat.js" defer></script>
+        <script src="https://cdn.jsdelivr.net/npm/markdown-it@latest/dist/markdown-it.min.js"></script>
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@latest/build/styles/base16/dracula.min.css">
+        <script>
+            const user_image        = `<img src="/assets/img/wpblacksquare.png" alt="Your world piece">`;
+            const gpt_image         = `<img src="/assets/img/upcblacksquare.png" alt="the universal piece computer">`;
+        </script>
+        <style>
+            .hljs {
+                color: #e9e9f4;
+                background: #28293629;
+                border-radius: var(--border-radius-1);
+                border: 1px solid var(--blur-border);
+                font-size: 12px;
+            }
+
+            #message-input {
+                margin-right: 30px;
+                height: 80px;
+            }
+
+            #message-input::-webkit-scrollbar {
+                width: 5px;
+            }
+
+            /* Track */
+            #message-input::-webkit-scrollbar-track {
+                background: #f1f1f1; 
+            }
+            
+            /* Handle */
+            #message-input::-webkit-scrollbar-thumb {
+                background: #c7a2ff; 
+            }
+
+            /* Handle on hover */
+            #message-input::-webkit-scrollbar-thumb:hover {
+                background: #8b3dff; 
+            }
+        </style>
+        <script src="/assets/js/highlight.min.js"></script>
+        <script src="/assets/js/highlightjs-copy.min.js"></script>
+        <script>window.conversation_id = `{{chat_id}}`</script>
+        <title>The Individual</title>
+
+    </head>
+    <body>
+
+        <div class="gradient"></div>
+
+
+        <div class="row">
+
+
+            <div class="box conversations">
+                <div class="top">
+                    <button class="new_convo" onclick="new_conversation()">
+                        <i class="fa-regular fa-plus"></i>
+                        <span>New Conversation</span>
+                    </button>
+                    <div class="spinner"></div>
+                </div>
+                <div class="bottom_buttons">
+                    <div class="info">
+			<span class="convo-title"><strong>The Individual:</strong><br>
+				<br>
+				A chat companion to the Time Machine For Peace Social Invention Program.<br>
+				<br>
+				<em>Version: 0.1.0</em><br>
+				<em>Release: 2023-07-15</em><br>
+				<em>By: @blairmunroakusa</em><br>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="conversation disable-scrollbars">
+                <div class="stop_generating stop_generating-hidden">
+                    <button id="cancelButton">
+                        <span>Stop Generating</span>
+                        <i class="fa-regular fa-stop"></i>
+                    </button>
+                </div>
+		<div class="info">
+		    <i class="fa-regular fa-circle-info"></i>
+		    <span class="intro-text"><p style="font-size:16px;"><strong>Welcome to the time machine for peace!</strong></p><br>
+			    The following is a conversation between You, the Human, and an AI form of <em><strong>The Individual</strong></em>, the main character from <em><strong>A Study In Peace</strong></em>. The Individual is a companion to A Study In Peace and the <em><strong>time machine for peace social invention program</strong></em>.
+			    <br><br>
+		    To begin, try asking what our purpose is, or type 'help' for more information.</span>
+		</div>
+                <div class="box" id="messages">
+                </div>
+                <div class="user-input">
+                    <div class="box input-box">
+			    <textarea id="message-input" placeholder="Enter a prompt, or type: 'topics' for menu, 'wild' for random, 'simple' to simplify, 'help' for extra info, or rephrase previous response for a 'child', 'elder', 'teen', 'mom', or 'friend'" cols="30" rows="10" style="white-space: pre-wrap;" oninput="resizeTextarea(this)"></textarea>
+                        <div id="send-button">
+                            <i class="fa-regular fa-paper-plane-top"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="buttons">
+                    <div id="invisible_div" class="field">
+                        <input type="checkbox" id="switch"/>
+                        <label for="switch"></label>
+                        <span class="about">Include 2021-2023</span>
+                    </div>
+                    <div id="invisible_div" class="field">
+                        <select name="model" id="model">
+                            <option value="gpt-3.5-turbo" selected>gpt-3.5-turbo</option>
+                            <option value="gpt-4">gpt-4</option>
+                        </select>
+                        <!-- <span class="about">Model</span> -->
+                    </div>
+                    <div id="invisible_div" class="field">
+                        <select name="jailbreak" id="jailbreak">
+                            <option value="default" selected>default</option>
+                            <option value="default">default</option>
+                        </select>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+        <div class="mobile-sidebar">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+    </body>
+</html>

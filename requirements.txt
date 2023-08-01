@@ -1,0 +1,6 @@
+flask
+requests
+typing_extensions==4.5.0
+typing-inspect==0.8.0
+pydantic==1.9
+langchain==0.0.161
