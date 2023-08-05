@@ -4,8 +4,7 @@ FROM python:3.8-alpine AS build
 WORKDIR /app
 
 COPY requirements.txt requirements.txt
-RUN apk add --no-cache build-base && \
-    pip3 install --user --no-cache-dir -r requirements.txt
+RUN pip3 install -r requirements.txt
 
 COPY . .
 
