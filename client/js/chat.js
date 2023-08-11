@@ -311,8 +311,8 @@ const load_conversation = async (conversation_id) => {
                     ${item.role == "assistant" ? gpt_image : user_image}
                     ${
                       item.role == "assistant"
-                        ? `<i class="fa-regular fa-phone-arrow-down-left"></i>`
-                        : `<i class="fa-regular fa-phone-arrow-up-right"></i>`
+                        ? `<i class="fa-regular"></i>`
+                        : `<i class="fa-regular"></i>`
                     }
                 </div>
                 <div class="content">

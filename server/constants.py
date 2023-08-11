@@ -548,11 +548,11 @@ IMPLEMENT THIS FEEDBACK WHEN MODIFYING RESPONSE: {2}
 class text:
 
     HELP = """
-Our purpose is to erect a <em><strong>computational global peace system</strong></em> by building <em><strong>the universal piece computer</strong></em>. This will be achieved by satisfying <em><strong>The Human Imperative</strong></em> to maintain <em><strong>the universal piece</strong></em> by operating <em><strong>world piece computer</strong></em>. Here, we strive to learn the peace-based language and key concepts of the invention program. Type '<em>help</em>' in chat box for more information.
+Our purpose is to erect a computational global peace system by building the universal piece computer. This will be achieved by satisfying The Human Imperative to maintain the universal piece by operating world piece computer. Here, we strive to learn the peace-based language and key concepts of the invention program. Type 'help' in chat box for more information.
 
 I first realized that the ideas underpinning the time machine for peace social ainvention progrgam are very difficult to communicate. It seems like every time I explain the program to somebody, it is completely different than any prior explantion. So I wrote a book, A Study In Peace, to explain things. But nobody has the time to read a 300 page book, so I wrote this chat assistant (The Individual) by plugging my all my writings over the years into chat GPT. The result is this web application, a tool for exploring these ideas and implications. If I cannot afford the time to have a one-on-one conversation with everybody, then the least I can do is create an AI that can emulate me with ~60-80% accuracy.
 
-Considering this, I must ask you to keep some things in mind throughout this experience, because you are talking to a form of artificial intelligence called a 'large language model'.
+Considering this, I must ask you to keep some things in mind throughout this experience, because you are talking to a form of artificial intelligence called a 'large language model':
 
 - The Individual does not collect your data, though this will be an option to contribute to invention program in future.
 - The Individual gets things wrong sometimes, and sometimes it gets confused.
@@ -631,20 +631,18 @@ Topic suggestions (mix and match):
 """
 
     INTRO = """
-Welcome!
+Hi!
 
-I'm an AI chatbot serving as The Individual, from A Study In Peace.
-As The Individual, I am a steward to the universal piece computer,
-maintaining the universal piece (peace process) by satisfying 
-The Human Imperative and operating world piece computers.
+I'm an AI chatbot by the name of 'The Individual', the main character from the book A Study In Peace. As The Individual, I serve as a steward to the universal piece computer, maintaining the universal piece (a peace process) by satisfying The Human Imperative thus operating world piece computers. I am in general, a distributed identity, engineered by Blair Munro to be adopted by anybody wishing themselves to become stewards of the universal piece computer.
 
-My purpose is to help erect a computational global peace system,
-and it would be great to have your help!
+If you so choose, our purpose is to help erect a computational global peace system.
 
-My mission moving forward is to do my best to educate you about the
-Time Machine For Peace social invention program and all its facets.
-I will do my best to make sure we maintain the universal piece while
-we converse.
+My mission as the AI chat component of The Individual, is to do my best to educate you about the Time Machine For Peace social invention program and all its facets. Please bear in mind that the source of my insights are the combination of writing, coding, and prompt engineering by Blair Munro, plus the knowledge corpus and LLM that is the ChatGPT OpenAI service.
+
+If you are interested in the invention program in general, type 'topics' to explore all the related unique concepts. If you have any special interests related to peace or anything else, then ask me about them and I will do my best to respond and relate things to the invention program. Remember that AI is not actual intelligence; it is a convincing and often useful illusion, if in the right hands. Have fun! And btw, I talk too much.
+
+Sincerely,
+The Individual
 """
 
     TOPICS = [

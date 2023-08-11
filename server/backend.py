@@ -135,12 +135,13 @@ class Backend_Api:
 
                 return self.app.response_class("Feedback successfully added.")
 
-            print(prompt)
-
             match prompt:
 
                 case "":
                     return self.app.response_class("You must provide a prompt. Try again.")
+
+                case "intro":
+                    return self.app.response_class(text.INTRO)
 
                 case "help":
                     return self.app.response_class(text.HELP)

@@ -8,4 +8,4 @@ langchain==0.0.161
 tiktoken
 rich
 openai
-chromadb
+chromadb==0.3.29
