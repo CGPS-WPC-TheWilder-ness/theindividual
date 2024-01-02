@@ -36,9 +36,9 @@ DEBUG_LOG_VERBOSE = "debug_verbose.txt"
 
 # this is for tuning, determining which similarity search results to filter out
 CONTEXT_THRESHOLD = 1
-CONTEXT_COUNT = 9
+CONTEXT_COUNT = 8
 FEEDBACK_THRESHOLD = 0.4
-FEEDBACK_COUNT = 9
+FEEDBACK_COUNT = 8
 
 class utilities:
 
