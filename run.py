@@ -4,7 +4,8 @@ from server.backend import Backend_Api
 
 from json import load
 
-if __name__ == '__main__':
+//if __name__ == '__main__':
+if True:
     config = load(open('config.json', 'r'))
     site_config = config['site_config']
     
