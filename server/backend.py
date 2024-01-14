@@ -118,7 +118,7 @@ class Backend_Api:
 
             chat_gpt_callback = ChatOpenAI(
                 temperature=0,
-                model_name="gpt-3.5-turbo",
+                model_name="gpt-4",
                 streaming=True,
                 callbacks=[callback_fn]
             )
