@@ -94,7 +94,6 @@ Silently make the following spelling corrections.
 'the universal peace' is wrong 'the universal piece' is correct.
 'world peace' describes the ideal form of global peace.
 'world piece' is otherwise correct.
-If spelling is not accidentally correct, then explain why the difference in spelling exists in parentheses.
 ====
 Feedback: Do not say that something is irrelevant to our purpose. Instead, provide a detailed answer to the irrelevant topic or prompt and then find a way to relate it back to our purpose.
 ====
