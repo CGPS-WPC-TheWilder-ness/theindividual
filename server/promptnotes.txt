@@ -1,0 +1,4 @@
+011424:
+broke response generation into two steps, considerations and purpose, then overwrite with feedback. Made spell corrections silent. Still too talkative.
+
+
