@@ -29,6 +29,7 @@ from random import randint, choice
 from rich import print
 
 from server.constants import template, text
+from server.constitution import constitution
 
 # logging
 DEBUG_LOG_TERSE = "debug_terse.txt"
@@ -36,16 +37,16 @@ DEBUG_LOG_VERBOSE = "debug_verbose.txt"
 
 # this is for tuning, determining which similarity search results to filter out
 CONTEXT_THRESHOLD = 1
-CONTEXT_COUNT = 8
-FEEDBACK_THRESHOLD = 0.4
-FEEDBACK_COUNT = 8
+CONTEXT_COUNT = 1
+FEEDBACK_THRESHOLD = 1
+FEEDBACK_COUNT = 1
 
 class utilities:
 
     # use this to count tokens for prompt submissions
-    def num_tokens(string: str, encoding_name: str) -> int:
+    def num_tokens(string: str) -> int:
 
-        encoding = tiktoken.get_encoding(encoding_name)
+        encoding = tiktoken.encoding_for_model("gpt-4o")
         num_tokens = len(encoding.encode(string))
 
         return num_tokens
@@ -156,7 +157,7 @@ class utilities:
     # (where the {} approach is used by chain)
     def inject_main(context_injection: str, feedback_injection: str) -> str:
 
-        template_main = template.MAIN % (context_injection, feedback_injection)
+        template_main = template.MAIN % (constitution.CONSTITUTION, context_injection, feedback_injection)
 
         return template_main
 

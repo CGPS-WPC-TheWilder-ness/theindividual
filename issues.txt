@@ -1,0 +1,31 @@
+
+082624
+. response resets to prior point in conversation, sometimes falling back to the 'what is your purpose' test prompt
+. go through and clean out nonessential code
+
+. need a 'setup mode'
+. need to add 'only if relevant' qualifier to constitution
+. need to edit intro text panel in UI
+. need to think on how to implement interpreted language to generate prompt more programmatically
+	. eg, parse question by comparing to vectorstore with LF
+	. if embedding something relates strongly, render as LF term
+	. run rendered LF terms through 'interpreter' which switchs prompt to appropriate template
+	. templates contain instructions to LLM explaining how to navigate constitution, and how to address input
+:. (possibly) need to figure out local embedding solution (eg, Mistrel) or not? (looking up session cost now)
+	... nah, embeddings are cheap with openAI
+
+! BUT, session cost was ~2$. 
+
+NA
+. include bit to shorten responses unless elaboration is deemed necessary
+. move constitution within template?
+. info pane on UI
+. figure out suitable demo video
+. clean up all
+. deploy V2
+
+082824
+. add inquisition/socratic method piece in prompt template
+. add a 'keep it short and simple stupid' piece into template
+
+! write 'self-description' so that RAG bot has behavioral reference

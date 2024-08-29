@@ -1,0 +1,24 @@
+Token counts for prompt engineering purposes, GPT4omni:
+
+TMFP	1200
+THI	1700
+LF	2000
+CPB	500
+WP	500	
+WPC	500	
+UP	500	
+UPC	500
+total	7400
+
+old template
+700
+
+sumbission w/o history
+	. 8 context, 2 feedback
+		1900 good
+	. 100 context, 8 feedback
+		10000 great
+	. 8 context, 8 feedback
+		2700 good-better
+	. 100 context, 100 feedback
+		26900 

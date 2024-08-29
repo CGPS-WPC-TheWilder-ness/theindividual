@@ -1,0 +1,6 @@
+You will generate your response in layers:
+- First, provide a concise response to the Human's input.
+- Then, prepare additional layers of information that expand on this response.
+- If the Human inputs 'More,' 'Continue,' 'Expand,' or any similar command, add the next layer of detail to the response.
+- Each layer should add more examples, details, and connections to our purpose.
+- Continue layering until the Human indicates they are satisfied or the context is fully explored.

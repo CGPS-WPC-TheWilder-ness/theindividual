@@ -117,11 +117,11 @@ class Backend_Api:
             callback_fn = StreamingStdOutCallbackHandlerYield()
 
             chat_gpt_callback = ChatOpenAI(
-                temperature=0,
-                #model_name="gpt-4",
+                temperature=1,
                 model_name="gpt-4o",
                 streaming=True,
-                callbacks=[callback_fn]
+                callbacks=[callback_fn],
+                stop=[STOP_SEQUENCE]
             )
 
             dummy_memory = ConversationBufferWindowMemory(
@@ -150,238 +150,8 @@ class Backend_Api:
                 case "topics":
                     return self.app.response_class(text.MENU)
 
-                case "wild":
-                    topic_1, topic_2 = utilities.choose_topics()
-                    prompt = "Significance of {} and {}".format(topic_1, topic_2)
-
-                    # get context to inject into template
-                    context_injection, feedback_injection = utilities.combined_injections(
-                        contextdb,
-                        feedbackdb,
-                        prompt)
-
-                    # here we inject text to construct the final prompt for cases where prompt contains keyword
-                    template = utilities.inject_wild(context_injection, feedback_injection, topic_1, topic_2)
-
-                    PROMPT = PromptTemplate(
-                        input_variables=["history", "input"],
-                        template=template
-                    )
-
-                    def build_and_submit_wild():
-
-                        # because template changes with each prompt (to inject feedback embeddings)
-                        # we must reconstruct the chain object for each new prompt
-                        conversation = ConversationChain(
-                            prompt=PROMPT,
-                            llm=chat_gpt_callback,
-                            verbose=False,
-                            memory=dummy_memory
-                        )
-                        
-                        return conversation(prompt)["response"]
-                    prompt = "wild"
-
-                    threading.Thread(target=build_and_submit_wild).start()
-
-                case "child":
-                    latest_response = memory.load_memory_variables({})["history"].split("Human: ")[-1].split("The Individual: ")[-1]
-                    prompt = copy.copy(latest_response)
-                    # get context to inject into template
-                    context_injection, feedback_injection = utilities.combined_injections(
-                        contextdb,
-                        feedbackdb,
-                        prompt)
-
-                    prompt = "..."
-
-                    template = utilities.inject_child(context_injection, feedback_injection, latest_response)
-
-                    PROMPT = PromptTemplate(
-                        input_variables=["history", "input"],
-                        template=template
-                    )
-
-                    def build_and_submit_child():
-
-                        # because template changes with each prompt (to inject feedback embeddings)
-                        # we must reconstruct the chain object for each new prompt
-                        conversation = ConversationChain(
-                            prompt=PROMPT,
-                            llm=chat_gpt_callback,
-                            verbose=False,
-                            memory=dummy_memory
-                        )
-                        return conversation(prompt)["response"]
-                    prompt = "child"
-
-                    threading.Thread(target=build_and_submit_child).start()
-
-                case "elder":
-                    latest_response = memory.load_memory_variables({})["history"].split("Human: ")[-1].split("The Individual: ")[-1]
-                    prompt = copy.copy(latest_response)
-                    # get context to inject into template
-                    context_injection, feedback_injection = utilities.combined_injections(
-                        contextdb,
-                        feedbackdb,
-                        prompt)
-
-                    prompt = "..."
-
-                    template = utilities.inject_elder(context_injection, feedback_injection, latest_response)
-
-                    PROMPT = PromptTemplate(
-                        input_variables=["history", "input"],
-                        template=template
-                    )
-
-                    def build_and_submit_elder():
-
-                        # because template changes with each prompt (to inject feedback embeddings)
-                        # we must reconstruct the chain object for each new prompt
-                        conversation = ConversationChain(
-                            prompt=PROMPT,
-                            llm=chat_gpt_callback,
-                            verbose=False,
-                            memory=dummy_memory
-                        )
-                        return conversation(prompt)["response"]
-                    prompt = "elder"
-
-                    threading.Thread(target=build_and_submit_elder).start()
-
-                case "mom":
-                    latest_response = memory.load_memory_variables({})["history"].split("Human: ")[-1].split("The Individual: ")[-1]
-                    prompt = copy.copy(latest_response)
-                    # get context to inject into template
-                    context_injection, feedback_injection = utilities.combined_injections(
-                        contextdb,
-                        feedbackdb,
-                        prompt)
-
-                    prompt = "..."
-
-                    template = utilities.inject_mom(context_injection, feedback_injection, latest_response)
-
-                    PROMPT = PromptTemplate(
-                        input_variables=["history", "input"],
-                        template=template
-                    )
-
-                    def build_and_submit_teen():
-
-                        # because template changes with each prompt (to inject feedback embeddings)
-                        # we must reconstruct the chain object for each new prompt
-                        conversation = ConversationChain(
-                            prompt=PROMPT,
-                            llm=chat_gpt_callback,
-                            verbose=False,
-                            memory=dummy_memory
-                        )
-                        return conversation(prompt)["response"]
-                    prompt = "mom"
-
-                    threading.Thread(target=build_and_submit_teen).start()
-                     
-                case "simple":
-                    latest_response = memory.load_memory_variables({})["history"].split("Human: ")[-1].split("The Individual: ")[-1]
-                    prompt = copy.copy(latest_response)
-                    # get context to inject into template
-                    context_injection, feedback_injection = utilities.combined_injections(
-                        contextdb,
-                        feedbackdb,
-                        prompt)
-
-                    prompt = "..."
-
-                    template = utilities.inject_simple(context_injection, feedback_injection, latest_response)
-
-                    PROMPT = PromptTemplate(
-                        input_variables=["history", "input"],
-                        template=template
-                    )
-
-                    def build_and_submit_simple():
-
-                        # because template changes with each prompt (to inject feedback embeddings)
-                        # we must reconstruct the chain object for each new prompt
-                        conversation = ConversationChain(
-                            prompt=PROMPT,
-                            llm=chat_gpt_callback,
-                            verbose=False,
-                            memory=dummy_memory
-                        )
-                        return conversation(prompt)["response"]
-                    prompt = "simple"
-
-                    threading.Thread(target=build_and_submit_simple).start()                   
-
-                case "friend":
-                    latest_response = memory.load_memory_variables({})["history"].split("Human: ")[-1].split("The Individual: ")[-1]
-                    prompt = copy.copy(latest_response)
-                    # get context to inject into template
-                    context_injection, feedback_injection = utilities.combined_injections(
-                        contextdb,
-                        feedbackdb,
-                        prompt)
-
-                    prompt = "..."
-
-                    template = utilities.inject_friend(context_injection, feedback_injection, latest_response)
-
-                    PROMPT = PromptTemplate(
-                        input_variables=["history", "input"],
-                        template=template
-                    )
-
-                    def build_and_submit_friend():
-
-                        # because template changes with each prompt (to inject feedback embeddings)
-                        # we must reconstruct the chain object for each new prompt
-                        conversation = ConversationChain(
-                            prompt=PROMPT,
-                            llm=chat_gpt_callback,
-                            verbose=False,
-                            memory=dummy_memory
-                        )
-                        return conversation(prompt)["response"]
-                    prompt = "friend"
-
-                    threading.Thread(target=build_and_submit_friend).start()
-                    
-                case "teen":
-                    latest_response = memory.load_memory_variables({})["history"].split("Human: ")[-1].split("The Individual: ")[-1]
-                    prompt = copy.copy(latest_response)
-                    # get context to inject into template
-                    context_injection, feedback_injection = utilities.combined_injections(
-                        contextdb,
-                        feedbackdb,
-                        prompt)
-
-                    prompt = "..."
-
-                    template = utilities.inject_teen(context_injection, feedback_injection, latest_response)
-
-                    PROMPT = PromptTemplate(
-                        input_variables=["history", "input"],
-                        template=template
-                    )
-
-                    def build_and_submit_teen():
-
-                        # because template changes with each prompt (to inject feedback embeddings)
-                        # we must reconstruct the chain object for each new prompt
-                        conversation = ConversationChain(
-                            prompt=PROMPT,
-                            llm=chat_gpt_callback,
-                            verbose=False,
-                            memory=dummy_memory
-                        )
-                        return conversation(prompt)["response"]
-                    prompt = "teen"
-
-                    threading.Thread(target=build_and_submit_teen).start()
-
+                case "menu":
+                    return self.app.response_class(text.WELCOME)
 
                 case _:
                     # get context to inject into template
@@ -397,6 +167,8 @@ class Backend_Api:
                         template=template
                     )
 
+                    print(PROMPT)
+
                     def build_and_submit():
 
                         # because template changes with each prompt (to inject feedback embeddings)
@@ -411,7 +183,7 @@ class Backend_Api:
 
                     threading.Thread(target=build_and_submit).start()
 
-            print(utilities.num_tokens(memory.load_memory_variables({})["history"] + PROMPT.template, "cl100k_base"))
+            print(utilities.num_tokens(memory.load_memory_variables({})["history"] + PROMPT.template))
             print()
             print()
             return self.app.response_class(stream_with_context(stream(q, prompt)), mimetype="text/event-stream")
